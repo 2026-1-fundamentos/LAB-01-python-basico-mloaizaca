@@ -20,3 +20,12 @@ def pregunta_10():
 
 
     """
+    result = []
+    with open("files/input/data.csv", "r") as f:
+        for line in f:
+            cols = line.strip().split("\t")
+            letter = cols[0]
+            count_col4 = len(cols[3].split(","))
+            count_col5 = len(cols[4].split(","))
+            result.append((letter, count_col4, count_col5))
+    return result

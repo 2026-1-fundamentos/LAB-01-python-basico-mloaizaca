@@ -24,3 +24,11 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    counts = {}
+    with open("files/input/data.csv", "r") as f:
+        for line in f:
+            pairs = line.strip().split("\t")[4].split(",")
+            for pair in pairs:
+                k = pair.split(":")[0]
+                counts[k] = counts.get(k, 0) + 1
+    return dict(sorted(counts.items()))

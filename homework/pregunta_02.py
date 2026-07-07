@@ -15,3 +15,9 @@ def pregunta_02():
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
 
     """
+    counts = {}
+    with open("files/input/data.csv", "r") as f:
+        for line in f:
+            col = line.strip().split("\t")[0]
+            counts[col] = counts.get(col, 0) + 1
+    return sorted(counts.items())

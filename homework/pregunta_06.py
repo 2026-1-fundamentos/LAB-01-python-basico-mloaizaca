@@ -26,3 +26,16 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+    data = {}
+    with open("files/input/data.csv", "r") as f:
+        for line in f:
+            pairs = line.strip().split("\t")[4].split(",")
+            for pair in pairs:
+                k, v = pair.split(":")
+                val = int(v)
+                if k not in data:
+                    data[k] = [val, val]
+                else:
+                    data[k][0] = min(data[k][0], val)
+                    data[k][1] = max(data[k][1], val)
+    return [(k, v[0], v[1]) for k, v in sorted(data.items())]
